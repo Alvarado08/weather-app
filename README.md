@@ -1,3 +1,3 @@
 # Weather Forecast App ⛅️
 
-Weather Forecast App consuming WeatherAPI with TypeScript
+Minimalistic Weather Forecast App consuming [WeatherAPI](https://www.weatherapi.com) built with TypeScript
