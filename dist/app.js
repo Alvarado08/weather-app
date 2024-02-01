@@ -10,13 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const baseUrl = 'https://api.weatherapi.com/v1';
 const key = 'c26069194a4e4f73bac22525240501';
-function getCurrent(city) {
+function getWeatherData(city) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const url = `${baseUrl}/current.json?key=${key}&q=${city}`;
+            const url = `${baseUrl}/forecast.json?key=${key}&q=${city}&days=3`;
             const response = yield fetch(url);
             const data = yield response.json();
-            if (response) {
+            if (response.status === 200) {
                 console.log(data);
                 getTemperature(data);
             }
@@ -30,7 +30,10 @@ function getCurrent(city) {
         }
     });
 }
-getCurrent("London");
+getWeatherData("London");
 function getTemperature(data) {
     console.log(data.current.feelslike_c + ' C', data.current.feelslike_f + ' F');
+}
+function getForecast(data) {
+    console.log(data.forecastDays);
 }
