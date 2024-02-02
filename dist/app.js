@@ -19,6 +19,7 @@ function getWeatherData(city) {
             if (response.status === 200) {
                 console.log(data);
                 getTemperature(data);
+                getForecast(data);
             }
             else {
                 console.log('Server Error', data.error.message);
@@ -35,5 +36,7 @@ function getTemperature(data) {
     console.log(data.current.feelslike_c + ' C', data.current.feelslike_f + ' F');
 }
 function getForecast(data) {
-    console.log(data.forecastDays);
+    data.forecast.forecastday.forEach(dayF => {
+        console.log(dayF);
+    });
 }
