@@ -3,10 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="dist/app.js" defer></script>
     <title>Weather Forecast</title>
+    <style>
+        .typed-cursor {
+            color: #E2DED1;
+            margin-left: 10px;
+            font-size: 2em;
+        }
+    </style>
 </head>
-<body>
-    
+<body class="bg-[#E0E2E4]">
+    <div class="flex items-center justify-center min-h-screen">
+        <main class="flex flex-col p-5 gap-5 w-full max-w-3xl">
+            <div id="typed-strings">
+                <p>Weather Forecast</p>
+                <p>Weather in London</p>
+                <p>Weather in Tokyo</p>
+                <p>Weather Forecast</p>
+            </div>
+            <div class="flex items-center justify-center">
+                <h1 id="title" class="text-5xl text-[#1F1D1B] font-bold"></h1>
+            </div>
+            <section id="search" class="flex items-center justify-center gap-3 w-full">
+                <input 
+                type="text" 
+                class="w-full max-w-xs p-2 outline-none text-[#1F1D1B] bg-transparent backdrop-blur-sm border border-[#1F1D1B]/50 rounded focus:border-[#1F1D1B] text-[#1F1D1B] transition-colors delay-150 duration-200 ease-in-out" 
+                placeholder="Search city">
+                <button class="group text-[#1F1D1B] hover:text-[#1F1D1B]/50 transition-colors delay-100 duration-150 ease-in-out font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:scale-110 transition-transform delay-100 duration-150 ease-in-out" width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M18.064 10.877l-4.89 -7.26c-.42 -.625 -1.287 -.803 -1.936 -.397a1.376 1.376 0 0 0 -.41 .397l-4.893 7.26c-1.695 2.838 -1.035 6.441 1.567 8.546a7.13 7.13 0 0 0 4.168 1.572" />
+                        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                        <path d="M20.2 20.2l1.8 1.8" />
+                    </svg>
+                </button>
+            </section>
+            <section id="weather"></section>
+            <!-- <section id="weather" class="grid grid-cols-2 gap-3">
+                <article class="col-span-1 p-5 shadow-lg rounded backdrop-blur-lg border border-[#1F1D1B] w-full h-full text-[#1F1D1B]">
+                    <h3>Today</h3>
+                    <h3>London</h3>
+                    <h2 class="text-4xl text-center">23°</h2>
+                    <h3>Rain</h3>
+                    <span>H: 24° L: 18°</span>
+                </article>
+                <div class="col-span-1 gap-3">
+                    <div class="grid grid-cols-2 gap-3 w-full h-full text-[#E0E2E4]">
+                        <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm">
+                            sunrise/sunset
+                        </article>
+                        <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm">
+                            wind
+                        </article>
+                        <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm">
+                            humidity
+                        </article>
+                        <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm">
+                            UV
+                        </article>
+                    </div>
+                </div>
+                <div class="col-span-2">
+                    <div class="grid grid-cols-3 gap-3">
+                        <article class="border border-[#1F1D1B] text-[#1F1D1B] p-5 rounded shadow-md backdrop-blur-sm w-full h-full">
+                            Mon
+                        </article>
+                        <article class="bg-[#1F1D1B] text-[#E0E2E4] p-5 rounded shadow-md backdrop-blur-sm w-full h-full">
+                            Tue
+                        </article>
+                        <article class="border border-[#1F1D1B] p-5 rounded shadow-md backdrop-blur-sm w-full h-full w-full h-full">
+                            Wed
+                        </article>
+                    </div>
+                </div>
+            </section> -->
+        </main>
+    </div>
+    <script>
+        const titleEl = document.getElementById('title');
+        let typed = new Typed('#title', {
+            stringsElement: '#typed-strings',
+            smartBackspace: true,
+            typeSpeed: 90,
+            backDelay: 700,
+            backSpeed: 100,
+            loop: false,
+            loopCount: Infinity,
+        });
+    </script>
 </body>
 </html>
