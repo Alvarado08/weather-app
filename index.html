@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="dist/typed.js" defer></script>
     <script src="dist/app.js" defer></script>
     <title>Weather Forecast</title>
     <style>
         .typed-cursor {
-            color: #E2DED1;
+            color: #1F1D1B;
             margin-left: 10px;
             font-size: 2em;
         }
@@ -18,10 +19,11 @@
 <body class="bg-[#E0E2E4]">
     <div class="flex items-center justify-center min-h-screen">
         <main class="flex flex-col p-5 gap-5 w-full max-w-3xl">
-            <div id="typed-strings">
+            <div id="typed-strings" class="hidden">
                 <p>Weather Forecast</p>
                 <p>Weather in London</p>
                 <p>Weather in Tokyo</p>
+                <p>Weather in Paris</p>
                 <p>Weather Forecast</p>
             </div>
             <div class="flex items-center justify-center">
@@ -82,17 +84,5 @@
             </section> -->
         </main>
     </div>
-    <script>
-        const titleEl = document.getElementById('title');
-        let typed = new Typed('#title', {
-            stringsElement: '#typed-strings',
-            smartBackspace: true,
-            typeSpeed: 90,
-            backDelay: 700,
-            backSpeed: 100,
-            loop: false,
-            loopCount: Infinity,
-        });
-    </script>
 </body>
 </html>
