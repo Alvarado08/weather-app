@@ -63,39 +63,111 @@ function showWeatherData() {
     searchContainer.classList.remove('justify-center');
     searchContainer.classList.add('justify-end');
     mainContainer.innerHTML = `
-        <article class="col-span-1 p-5 shadow-lg rounded backdrop-blur-lg border border-[#1F1D1B] w-full h-full text-[#1F1D1B]">
-            <h3>Today</h3>
-            <h3>London</h3>
+        <article class="col-span-1 p-5 shadow-lg rounded backdrop-blur-lg border border-[#1F1D1B] w-full h-full text-[#1F1D1B] flex flex-col justify-between">
+            <div>
+                <h3 class="text-xl font-semibold">Today</h3>
+                <h3 class="text-lg">London</h3>
+            </div>
             <h2 class="text-4xl text-center">23°</h2>
-            <h3>Rain</h3>
-            <span>H: 24° L: 18°</span>
+            <div>
+                <h3>Rainy</h3>
+                <span>H: 24° L: 18°</span>
+            </div>
         </article>
         <div class="col-span-1 gap-3">
             <div class="grid grid-cols-2 gap-3 w-full h-full text-[#E0E2E4]">
-                <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm">
-                    sunrise/sunset
+                <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm flex flex-col justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" 
+                        class="icon icon-tabler icon-tabler-sunset" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17h1m16 0h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7m-9.7 5.7a4 4 0 0 1 8 0" /><path d="M3 21l18 0" />
+                        <path d="M12 9v-6l3 3m-6 0l3 -3" />
+                        </svg>
+                        <span class="text-sm">6:00AM</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sunset" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17h1m16 0h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7m-9.7 5.7a4 4 0 0 1 8 0" /><path d="M3 21l18 0" /><path d="M12 3v6l3 -3m-6 0l3 3" />
+                        </svg>
+                        <span class="text-sm">8:00PM</span>
+                    </div>
                 </article>
-                <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm">
-                    wind
+                <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm flex flex-col items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wind" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" /><path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" /><path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
+                    </svg>
+                    <span class="text-sm">15 km/h</span>
                 </article>
-                <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm">
-                    humidity
+                <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm flex flex-col items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-rain" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" /><path d="M11 13v2m0 3v2m4 -5v2m0 3v2" />
+                    </svg>
+                    <span class="text-sm">10%</span>
                 </article>
-                <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm">
-                    UV
+                <article class="p-5 bg-[#1F1D1B] rounded shadow-md backdrop-blur-sm flex flex-col justify-between items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-uv-index" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12h1m16 0h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7m-9.7 5.7a4 4 0 1 1 8 0" /><path d="M12 4v-1" /><path d="M13 16l2 5h1l2 -5" /><path d="M6 16v3a2 2 0 1 0 4 0v-3" />
+                    </svg>
+                    <span class="text-sm">5</span>
                 </article>
             </div>
         </div>
         <div class="col-span-2">
             <div class="grid grid-cols-3 gap-3">
-                <article class="border border-[#1F1D1B] text-[#1F1D1B] p-5 rounded shadow-md backdrop-blur-sm w-full h-full">
-                    Mon
+                <article class="border border-[#1F1D1B] text-[#1F1D1B] p-5 rounded shadow-md backdrop-blur-sm w-full h-full flex flex-col justify-between gap-2">
+                    <h2 class="font-bold">Mon</h2>
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-col items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-rain" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" /><path d="M11 13v2m0 3v2m4 -5v2m0 3v2" />
+                            </svg>
+                            <span class="text-sm">10%</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wind" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" /><path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" /><path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
+                            </svg>
+                            <span class="text-sm">15 km/h</span>
+                        </div>
+                    </div>
+                    <h2 class="text-4xl text-center">26°</h2>
+                    <div>
+                        <h3>Sunny</h3>
+                        <span>H: 24° L: 18°</span>
+                    </div>
                 </article>
-                <article class="bg-[#1F1D1B] text-[#E0E2E4] p-5 rounded shadow-md backdrop-blur-sm w-full h-full">
-                    Tue
+                <article class="bg-[#1F1D1B] text-[#E0E2E4] p-5 rounded shadow-md backdrop-blur-sm w-full h-full flex flex-col justify-between gap-2">
+                    <h2 class="font-bold">Tue</h2>
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-col items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-rain" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" /><path d="M11 13v2m0 3v2m4 -5v2m0 3v2" />
+                            </svg>
+                            <span class="text-sm">5%</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wind" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" /><path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" /><path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
+                            </svg>
+                            <span class="text-sm">7 km/h</span>
+                        </div>
+                    </div>
+                    <h2 class="text-4xl text-center">21°</h2>
+                    <div>
+                        <h3>Cloudy</h3>
+                        <span>H: 22° L: 17°</span>
+                    </div>
                 </article>
-                <article class="border border-[#1F1D1B] p-5 rounded shadow-md backdrop-blur-sm w-full h-full w-full h-full">
-                    Wed
+                <article class="border border-[#1F1D1B] text-[#1F1D1B] p-5 rounded shadow-md backdrop-blur-sm w-full h-full flex flex-col justify-between gap-2">
+                    <h2 class="font-bold">Wed</h2>
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-col items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-rain" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" /><path d="M11 13v2m0 3v2m4 -5v2m0 3v2" />
+                            </svg>
+                            <span class="text-sm">30%</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wind" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" /><path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" /><path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
+                            </svg>
+                            <span class="text-sm">10 km/h</span>
+                        </div>
+                    </div>
+                    <h2 class="text-4xl text-center">15°</h2>
+                    <div>
+                        <h3>Rainy</h3>
+                        <span>H: 20° L: 10°</span>
+                    </div>
                 </article>
             </div>
         </div>
