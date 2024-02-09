@@ -1,11 +1,20 @@
 const searchBtn = document.querySelector('button') as HTMLButtonElement;
+const inputEl = document.querySelector('input') as HTMLInputElement;
+const errorMsj = document.getElementById('error') as HTMLSpanElement;
 const mainContainer = document.getElementById('weather') as HTMLDivElement;
 const searchContainer = document.getElementById('search') as HTMLDivElement;
 
 interface WeatherInfo {
+    location: {
+        name: string,
+        country: string
+    },
     current: {
-        feelslike_c: number,
-        feelslike_f: number
+        temp_c: number,
+        humidity: number,
+        condition: {
+            text: string
+        }
     },
     forecast: {
         forecastday: [
@@ -38,15 +47,37 @@ interface WeatherInfo {
 const baseUrl = 'https://api.weatherapi.com/v1';
 const key = 'c26069194a4e4f73bac22525240501';
 
-async function getWeatherData(city: string): Promise<void> {
+// Console testing
+// async function getWeatherData(city: string): Promise<void> {
+//     try {
+//         const url = `${baseUrl}/forecast.json?key=${key}&q=${city}&days=3`;
+//         const response = await fetch(url);
+//         const data = await response.json();
+//         if(response.status === 200){
+//             console.log(data);
+//             // getTemperature(data);
+//             getForecast(data);
+//         }else{
+//             console.log('Server Error',data.error.message);
+//         }
+//     } catch (error) {
+//         // Fetch request couldn't be completed
+//         console.log('Fetch Error:',error);
+//     }
+// }
+//getWeatherData("London");
+
+async function getWeatherData(): Promise<void> {
     try {
+        let city = inputEl.value.trim();
         const url = `${baseUrl}/forecast.json?key=${key}&q=${city}&days=3`;
         const response = await fetch(url);
         const data = await response.json();
         if(response.status === 200){
             console.log(data);
-            getTemperature(data);
-            getForecast(data);
+            showWeatherData(data);
+            // getTemperature(data);
+            // getForecast(data);
         }else{
             console.log('Server Error',data.error.message);
         }
@@ -54,11 +85,6 @@ async function getWeatherData(city: string): Promise<void> {
         // Fetch request couldn't be completed
         console.log('Fetch Error:',error);
     }
-}
-// getWeatherData("London");
-
-function getTemperature(data: WeatherInfo): void {
-    console.log(data.current.feelslike_c + ' C', data.current.feelslike_f + ' F');
 }
 
 function getForecast(data: WeatherInfo): void {
@@ -82,7 +108,7 @@ function loadingData(): void {
     `;
 }
 
-function showWeatherData(): void{
+function showWeatherData(data: WeatherInfo): void{
     mainContainer.classList.remove("w-full","flex","justify-center");
     mainContainer.classList.add('grid', 'grid-cols-2', 'gap-3');
     searchContainer.classList.remove('justify-center');
@@ -91,12 +117,16 @@ function showWeatherData(): void{
         <article class="col-span-1 p-5 shadow-lg rounded backdrop-blur-lg border border-[#1F1D1B] w-full h-full text-[#1F1D1B] flex flex-col justify-between">
             <div>
                 <h3 class="text-xl font-semibold">Today</h3>
-                <h3 class="text-lg">London</h3>
+                <h3 class="text-lg">${data.location.name}, ${data.location.country}</h3>
             </div>
-            <h2 class="text-4xl text-center">23°</h2>
-            <div>
-                <h3>Rainy</h3>
-                <span>H: 24° L: 18°</span>
+            <h2 class="text-xl sm:text-2xl md:text-4xl text-center">${data.current.temp_c}°</h2>
+            <div class="gap-3">
+                <h3>${data.current.condition.text}</h3>
+                <div class="inline-flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ripple" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7c3 -2 6 -2 9 0s6 2 9 0" /><path d="M3 17c3 -2 6 -2 9 0s6 2 9 0" /><path d="M3 12c3 -2 6 -2 9 0s6 2 9 0" />
+                    </svg>
+                    <span>${data.current.humidity}</span>
+                </div>
             </div>
         </article>
         <div class="col-span-1 gap-3">
@@ -200,6 +230,19 @@ function showWeatherData(): void{
 }
 
 searchBtn.addEventListener('click', () => {
-    setTimeout(loadingData, 500);
-    setTimeout(showWeatherData, 2000);
+    if(inputEl.value.trim() === ''){
+        inputEl.classList.add('border-red-500','text-red-500');
+        inputEl.value = 'Please enter a valid city name!';
+        // errorMsj.textContent = 'Please enter a valid city name!';
+        setTimeout(() => {
+            // errorMsj.textContent = '';
+            inputEl.classList.remove('border-red-500','text-red-500');
+            inputEl.value = '';
+        }, 3000);
+    } else {
+        loadingData();
+        setTimeout(() => {
+            getWeatherData();
+        },2000);
+    }
 })
