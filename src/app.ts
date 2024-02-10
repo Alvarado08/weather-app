@@ -1,71 +1,12 @@
+import WeatherInfo from './weather-info';
+
 const searchBtn = document.querySelector('button') as HTMLButtonElement;
 const inputEl = document.querySelector('input') as HTMLInputElement;
-const errorMsj = document.getElementById('error') as HTMLSpanElement;
 const mainContainer = document.getElementById('weather') as HTMLDivElement;
 const searchContainer = document.getElementById('search') as HTMLDivElement;
 
-interface WeatherInfo {
-    location: {
-        name: string,
-        country: string
-    },
-    current: {
-        temp_c: number,
-        humidity: number,
-        condition: {
-            text: string
-        }
-    },
-    forecast: {
-        forecastday: [
-            {
-                date: string,
-                astro: {
-                    sunrise: string,
-                    sunset: string
-                },
-                day: {
-                    date: string,
-                    maxtemp_c: number,
-                    maxtemp_f: number,
-                    mintemp_c: number,
-                    mintemp_f: number,
-                    maxwind_mph: number,
-                    maxwind_kph: number,
-                    daily_chance_of_rain: number,
-                    uv: number
-                    condition: {
-                        icon: string,
-                        text: string
-                    }
-                }
-            }
-        ]
-    }
-}
-
 const baseUrl = 'https://api.weatherapi.com/v1';
 const key = 'c26069194a4e4f73bac22525240501';
-
-// Console testing
-// async function getWeatherData(city: string): Promise<void> {
-//     try {
-//         const url = `${baseUrl}/forecast.json?key=${key}&q=${city}&days=3`;
-//         const response = await fetch(url);
-//         const data = await response.json();
-//         if(response.status === 200){
-//             console.log(data);
-//             // getTemperature(data);
-//             getForecast(data);
-//         }else{
-//             console.log('Server Error',data.error.message);
-//         }
-//     } catch (error) {
-//         // Fetch request couldn't be completed
-//         console.log('Fetch Error:',error);
-//     }
-// }
-//getWeatherData("London");
 
 async function getWeatherData(): Promise<void> {
     try {
@@ -76,8 +17,6 @@ async function getWeatherData(): Promise<void> {
         if(response.status === 200){
             console.log(data);
             showWeatherData(data);
-            // getTemperature(data);
-            // getForecast(data);
         }else{
             console.log('Server Error',data.error.message);
         }
@@ -85,12 +24,6 @@ async function getWeatherData(): Promise<void> {
         // Fetch request couldn't be completed
         console.log('Fetch Error:',error);
     }
-}
-
-function getForecast(data: WeatherInfo): void {
-    data.forecast.forecastday.forEach(dayF => {
-        console.log(dayF);
-    })
 }
 
 function loadingData(): void {
@@ -233,9 +166,7 @@ searchBtn.addEventListener('click', () => {
     if(inputEl.value.trim() === ''){
         inputEl.classList.add('border-red-500','text-red-500');
         inputEl.value = 'Please enter a valid city name!';
-        // errorMsj.textContent = 'Please enter a valid city name!';
         setTimeout(() => {
-            // errorMsj.textContent = '';
             inputEl.classList.remove('border-red-500','text-red-500');
             inputEl.value = '';
         }, 3000);
@@ -243,6 +174,6 @@ searchBtn.addEventListener('click', () => {
         loadingData();
         setTimeout(() => {
             getWeatherData();
-        },2000);
+        },1000);
     }
 })

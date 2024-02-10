@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -10,30 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const searchBtn = document.querySelector('button');
 const inputEl = document.querySelector('input');
-const errorMsj = document.getElementById('error');
 const mainContainer = document.getElementById('weather');
 const searchContainer = document.getElementById('search');
 const baseUrl = 'https://api.weatherapi.com/v1';
 const key = 'c26069194a4e4f73bac22525240501';
-// Console testing
-// async function getWeatherData(city: string): Promise<void> {
-//     try {
-//         const url = `${baseUrl}/forecast.json?key=${key}&q=${city}&days=3`;
-//         const response = await fetch(url);
-//         const data = await response.json();
-//         if(response.status === 200){
-//             console.log(data);
-//             // getTemperature(data);
-//             getForecast(data);
-//         }else{
-//             console.log('Server Error',data.error.message);
-//         }
-//     } catch (error) {
-//         // Fetch request couldn't be completed
-//         console.log('Fetch Error:',error);
-//     }
-// }
-//getWeatherData("London");
 function getWeatherData() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -44,8 +23,6 @@ function getWeatherData() {
             if (response.status === 200) {
                 console.log(data);
                 showWeatherData(data);
-                // getTemperature(data);
-                // getForecast(data);
             }
             else {
                 console.log('Server Error', data.error.message);
@@ -55,11 +32,6 @@ function getWeatherData() {
             // Fetch request couldn't be completed
             console.log('Fetch Error:', error);
         }
-    });
-}
-function getForecast(data) {
-    data.forecast.forecastday.forEach(dayF => {
-        console.log(dayF);
     });
 }
 function loadingData() {
@@ -200,9 +172,7 @@ searchBtn.addEventListener('click', () => {
     if (inputEl.value.trim() === '') {
         inputEl.classList.add('border-red-500', 'text-red-500');
         inputEl.value = 'Please enter a valid city name!';
-        // errorMsj.textContent = 'Please enter a valid city name!';
         setTimeout(() => {
-            // errorMsj.textContent = '';
             inputEl.classList.remove('border-red-500', 'text-red-500');
             inputEl.value = '';
         }, 3000);
@@ -211,6 +181,7 @@ searchBtn.addEventListener('click', () => {
         loadingData();
         setTimeout(() => {
             getWeatherData();
-        }, 2000);
+        }, 1000);
     }
 });
+export {};
