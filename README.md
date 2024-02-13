@@ -1,6 +1,6 @@
 # Minimalist Weather Forecast ⛅️
 
-![Weather Forecast App Preview](https://raw.githubusercontent.com/Alvarado08/weather-app/main/demo.mp4)
+![Weather Forecast App Preview](demo.png)
 
 Minimalist Weather Forecast App consuming [WeatherAPI](https://www.weatherapi.com) built with TypeScript and Tailwind
 
@@ -13,5 +13,9 @@ Who wants to see a complex and colorful UI for a Weather App right? A minimalist
 This project relies more on native DOM manipulation over standard modern tooling. Nevertheless, concepts such as modules and separation of concerns play a role in maintainting the code organized and promote clean coding practices.
 
 ## Quick Start
+
+### Live Demo
+
+[Have a look!](https://alvarado08.github.io/weather-app/ "Minimalist Weather Forecast App")
 
 ## Usage
