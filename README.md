@@ -1,5 +1,7 @@
 # Minimalist Weather Forecast ⛅️
 
+![Weather Forecast App Preview](https://raw.githubusercontent.com/Alvarado08/weather-app/main/demo.mp4)
+
 Minimalist Weather Forecast App consuming [WeatherAPI](https://www.weatherapi.com) built with TypeScript and Tailwind
 
 ## Motivation
