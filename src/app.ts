@@ -15,7 +15,6 @@ async function getWeatherData(): Promise<void> {
         const response = await fetch(url);
         const data = await response.json();
         if(response.status === 200){
-            console.log(data);
             showWeatherData(data);
             inputEl.value = '';
         }else{
@@ -82,7 +81,7 @@ function showWeatherData(data: WeatherInfo): void{
                 <h3 class="text-xl font-semibold">Now</h3>
                 <h3 class="text-lg">${data.location.name}, ${data.location.country}</h3>
             </div>
-            <h2 class="text-2xl md:text-4xl text-center">${Math.round(data.current.temp_c)}°</h2>
+            <h2 class="text-2xl md:text-4xl text-center inline">${Math.round(data.current.temp_c)}°<span class="text-2xl md:text-3xl">C</span></h2>
             <div class="gap-3">
                 <h3>${data.current.condition.text}</h3>
                 <div class="inline-flex items-center gap-2">
@@ -134,7 +133,7 @@ function showWeatherData(data: WeatherInfo): void{
                                     <span class="text-sm">${Math.round(fDay.day.maxwind_kph)} km/h</span>
                                 </div>
                             </div>
-                            <h2 class="text-2xl md:text-4xl text-center">${Math.round(fDay.day.avgtemp_c)}°</h2>
+                            <h2 class="text-2xl md:text-4xl text-center">${Math.round(fDay.day.avgtemp_c)}°<span class="text-2xl md:text-3xl">C</span></h2>
                             <div>
                                 <h3>${fDay.day.condition.text}</h3>
                                 <span>H: ${Math.round(fDay.day.maxtemp_c)}° L: ${Math.round(fDay.day.mintemp_c)}°</span>
