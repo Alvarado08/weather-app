@@ -4,7 +4,7 @@ Minimalist Weather Forecast App consuming [WeatherAPI](https://www.weatherapi.co
 
 ## Motivation
 
-Who wants to see a complex, colorful and enourmous UI for a Weather App right? A minimalist and simple apperance is all you need for an unforgettable user experience and straight to the point purpose.
+Who wants to see a complex and colorful UI for a Weather App right? A minimalist and captivating apperance is all you need for an unforgettable UX and straight to the point purpose.
 
 ## Description
 
