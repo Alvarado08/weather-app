@@ -6,6 +6,10 @@ export default interface WeatherInfo {
     current: {
         temp_c: number,
         humidity: number,
+        wind_kph: number,
+        precip_mm: number,
+        cloud: number,
+        uv: number,
         condition: {
             text: string
         }
@@ -20,16 +24,12 @@ export default interface WeatherInfo {
                 },
                 day: {
                     date: string,
+                    avgtemp_c: number,
                     maxtemp_c: number,
-                    maxtemp_f: number,
                     mintemp_c: number,
-                    mintemp_f: number,
-                    maxwind_mph: number,
                     maxwind_kph: number,
                     daily_chance_of_rain: number,
-                    uv: number
                     condition: {
-                        icon: string,
                         text: string
                     }
                 }
