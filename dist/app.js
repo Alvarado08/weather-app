@@ -168,4 +168,24 @@ searchBtn.addEventListener('click', () => {
         }, 1000);
     }
 });
+inputEl.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+        if (inputEl.value.trim() === '') {
+            inputEl.classList.add('border-red-500', 'focus:border-red-500', 'text-red-500');
+            inputEl.value = 'Please enter a valid city name!';
+            setTimeout(() => {
+                inputEl.classList.remove('border-red-500', 'focus:border-red-500', 'text-red-500');
+                inputEl.value = '';
+            }, 1500);
+        }
+        else {
+            loadingData();
+            inputEl.blur();
+            // Give time for the loading animation
+            setTimeout(() => {
+                getWeatherData();
+            }, 1000);
+        }
+    }
+});
 export {};
