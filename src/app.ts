@@ -14,10 +14,12 @@ async function getWeatherData(): Promise<void> {
         const url = `${baseUrl}/forecast.json?key=${key}&q=${city}&days=3`;
         const response = await fetch(url);
         const data = await response.json();
+        // Successful response
         if(response.status === 200){
             showWeatherData(data);
             inputEl.value = '';
         }else{
+            // Unsuccessful response
             clearContainer();
             inputEl.classList.add('border-red-500','text-red-500');
             inputEl.value = `${data.error.message}`;
@@ -28,7 +30,7 @@ async function getWeatherData(): Promise<void> {
             console.log('Server Error',data.error.message);
         }
     } catch (error) {
-        // Fetch request couldn't be completed
+        // Initial fetch request couldn't be completed
         clearContainer();
         inputEl.classList.add('border-red-500','text-red-500');
         inputEl.value = 'Oops...Technical difficulties!';
@@ -56,10 +58,12 @@ function loadingData(): void {
 }
 
 function clearContainer(): void{
+    // if weather data had been displayed before
     if(mainContainer.classList.contains('grid')){
         mainContainer.classList.remove('grid', 'grid-cols-2', 'gap-3');
         mainContainer.innerHTML = '';
     }else{
+        // if skeleton had been displayed before
         mainContainer.classList.remove("w-full","flex","justify-center");
         mainContainer.innerHTML = '';
     }
