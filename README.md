@@ -117,6 +117,7 @@ The 3 **functions** in charge of updating and populating the DOM:
 #### showWeatherData
 
 ```typescript
+function showWeatherData(data: WeatherInfo): void{
     mainContainer.classList.remove("w-full","flex","justify-center");
     mainContainer.classList.add('grid', 'grid-cols-2', 'gap-3');
     searchContainer.classList.remove('justify-center');
@@ -190,6 +191,7 @@ The 3 **functions** in charge of updating and populating the DOM:
             </div>
         </div>
     `;
+}
 ```
 
 #### loadingData
@@ -355,4 +357,4 @@ You can use a similar or the **live server** extension in VS Code that exist in 
 
 If you would like to customize the type effect, visit the [TypedJs Repository](https://alvarado08.github.io/weather-app/ "TypedJs Project Repository") for a quick intro
 
-The configuration can be found on the **typed.js** file inside of the **dist** directory
+The configuration can be found in the **typed.js** file inside of the **dist** directory
